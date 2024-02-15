@@ -10,11 +10,76 @@
 
 <body>
   <h1 id="greetings">Hello for this Tic Tac Toe Game</h1>
-  <button type="button" id="newGame">New Game</button>
+  <div id="gameButtonsContainer">
+    <button type="button" id="newGame">New Game</button>
+    <button type="button" id="choosePlayersButton">Choose Players</button>
+  </div>
   <h2 id="playersTurn"></h2>
   <div id="board">
 
   </div>
+  <dialog>
+
+    <form>
+      <div id="playersChoiceContainer">
+        <div id="playerOneConatainer" class="playersContainer">
+          <h1>Player one</h1>
+          <div class="playerChoice">
+            <div class="humanComputer">
+
+              <div class="humanComputerButtons">
+                <button type="button" id="playerOneHumanButton" class="humanButton"></button>
+                <button type="button" id="playerOneComputerButton" class="computerButton"></button>
+                <input type="hidden" id="selectedHumanComputer" required>
+              </div>
+              <div class="">
+                <label for="playerOneName">Player Name: </label>
+                <input id="playerOneName" required>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div id="playerTwoConatainer" class="playersContainer">
+          <h1>Player Two</h1>
+          <div class="playerChoice">
+            <div class="humanComputer">
+
+              <div class="humanComputerButtons">
+                <button type="button" id="playerTwoHumanButton" class="humanButton"></button>
+                <button type="button" id="playerTwoComputerButton" class="computerButton"></button>
+                <input type="hidden" id="selectedHumanComputer" required>
+              </div>
+              <div class="">
+                <label for="playerTwoName">Player Name: </label>
+                <input id="playerTwoName" required>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h1>Choose your Token</h1>
+        <div class="tokens">
+          <button type="button" class="token" id="button1"></button>
+          <button type="button" class="token" id="button2"></button>
+          <button type="button" class="token" id="button3"></button>
+          <button type="button" class="token" id="button4"></button>
+          <button type="button" class="token" id="button5"></button>
+          <input type="hidden" id="tokenChoice" required>
+        </div>
+      </div>
+      <div id="formSaveResetButtons">
+        <button id="save">Save</button>
+        <button id="resetButton">Reset</button>
+      </div>
+
+
+    </form>
+  </dialog>
 
   <script src="./ticTacToe.js"></script>
 </body>

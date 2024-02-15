@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form with Button Selection</title>
+  <style>
+    .button-container {
+      display: flex;
+    }
+
+    .button {
+      background: none;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .button:hover {
+      /* Add hover effect if needed */
+      /* For example: add a border or change opacity */
+    }
+  </style>
+</head>
+
+<body>
+
+  <form onsubmit="return validateForm()">
+    <div class="button-container">
+      <button type="button" class="button" onclick="selectButton('button1')">Button 1</button>
+      <button type="button" class="button" onclick="selectButton('button2')">Button 2</button>
+      <button type="button" class="button" onclick="selectButton('button3')">Button 3</button>
+      <button type="button" class="button" onclick="selectButton('button4')">Button 4</button>
+      <button type="button" class="button" onclick="selectButton('button5')">Button 5</button>
+    </div>
+
+    <input type="hidden" name="buttonSelection" id="buttonSelection" required>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    function selectButton(buttonId) {
+      document.getElementById('buttonSelection').value = buttonId;
+      validateForm(); // Call validation after selecting a button
+    }
+
+    function validateForm() {
+      var selectedButton = document.getElementById('buttonSelection').value;
+      var submitButton = document.querySelector('button[type="submit"]');
+      submitButton.disabled = !selectedButton; // Disable the submit button if no button is selected
+    }
+    validateForm();
+  </script>
+
+</body>
+
+</html>

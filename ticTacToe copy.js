@@ -190,14 +190,13 @@ function ScreenController() {
   const save = document.querySelector("#save");
   const choosePlayersButton = document.querySelector("#choosePlayersButton");
   const dialogForm = document.querySelector("dialog>form");
-  const resetFormButton = document.querySelector("#resetButton");
-  let selectedHumanComputerButton = null;
-  let selectedTokenButton = null;
-  resetFormButton.addEventListener("click", (e) => {
-    e.preventDefault();
+  const resetForm = document.querySelector("#reset");
 
-    resetForm();
-    playerOneName.focus();
+  resetForm.addEventListener("click", (e) => {
+    e.preventDefault();
+    selectedHumanComputerButton = null;
+    selectedTokenButton = null;
+    resetTokensSelection();
   });
 
   const humanComputerButtons = document.querySelectorAll(
@@ -205,25 +204,20 @@ function ScreenController() {
   );
   const tokens = document.querySelectorAll(".token");
 
-  const resetForm = () => {
-    tokens.forEach((token) => token.classList.remove("playerOneBackground"));
-    humanComputerButtons.forEach((button) =>
-      button.classList.remove("playerOneBackground")
-    );
-    selectedHumanComputerButton = null;
-    selectedTokenButton = null;
-  };
-
   const handleTokensClick = (e) => {
     if (selectedTokenButton) {
       selectedTokenButton.classList.remove("playerOneBackground");
     }
     selectedTokenButton = e.target;
-    // e.target.disabled = true;
+    e.target.disabled = true;
     selectedTokenButton.classList.add("playerOneBackground");
   };
   tokens.forEach((token) => token.addEventListener("click", handleTokensClick));
-
+  const resetTokensSelection = () => {
+    tokens.forEach((token) => token.classList.remove("playerOneBackground"));
+  };
+  let selectedHumanComputerButton = null;
+  let selectedTokenButton = null;
   const handleHumanComputerButtonsClick = (e) => {
     if (selectedHumanComputerButton) {
       selectedHumanComputerButton.classList.remove("playerOneBackground");
@@ -254,16 +248,16 @@ function ScreenController() {
     ).backgroundImage.replace(/^url\(['"](.+)['"]\)$/, "$1");
 
     if (dialogForm.checkValidity()) {
+      dialog.close();
       game.setPlayers(players[0]);
       game.setActivePlayer(players[0]);
       console.log("game.getPlayers(): ", game.getPlayers());
-      dialog.close();
+      dialogForm.reset();
     }
   });
 
   const handleChoosePlayers = () => {
     dialog.showModal();
-    dialogForm.reset();
   };
   choosePlayersButton.addEventListener("click", handleChoosePlayers);
   newGame.addEventListener("click", () => {

@@ -1,3 +1,7 @@
+:root {
+  --playerOneColor: #1e90ff;
+  --playerTwoColor: #ca88e4;
+}
 * {
   box-sizing: border-box;
 }
@@ -7,16 +11,104 @@ body {
   flex-direction: column;
   align-items: center;
 }
-
-#newGame {
+#gameButtonsContainer button {
+  margin: 20px;
   width: 200px;
   height: 50px;
+  font-size: x-large;
 }
+
 #board {
   display: grid;
   grid-template-columns: 120px 120px 120px;
   grid-template-rows: 120px 120px 120px;
 }
 .cell {
+  background-repeat: no-repeat;
+  background-size: 70% 70%;
+  background-position: center;
+
+  cursor: pointer;
+}
+
+form .playerChoice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form .humanComputer {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+}
+form .human {
+  display: flex;
+  flex-direction: column;
+}
+form .humanButton {
+  background-image: url("./images/human-icon.svg");
+}
+form .playerOneBackground {
+  background-color: var(--playerOneColor);
+}
+form .computerButton {
+  background-image: url("./images/robot-line-icon.svg");
+}
+form h1 {
+  background-color: var(--playerOneColor);
+  text-align: center;
+}
+form button {
+  background-color: white;
+
+  margin: 30px 20px;
+  padding: 2px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100px;
+  height: 70px;
+  border: 3px solid black;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+.tokens {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  justify-content: center;
+}
+#button1 {
+  background-image: url("./images/cat-animal-icon.svg");
+}
+#button2 {
+  background-image: url("./images/bull-stock-market-icon.svg");
+}
+#button3 {
+  background-image: url("./images/horse-head-icon.svg");
+}
+#button4 {
+  background-image: url("./images/monkey-animal-icon.svg");
+}
+#button5 {
+  background-image: url("./images/lion-face-icon.svg");
+}
+#save,
+#resetButton {
+  justify-self: center;
+  all: initial;
+  height: 30px;
+  width: 100px;
+  background-color: aqua;
+  text-align: center;
   cursor: pointer;
 }
